@@ -108,7 +108,6 @@ docker-compose exec web python manage.py loaddata fixtures.json
 ## Авторы
 Мочалин Александр — Разработчик
 
-
 ## Развёрнутый проект
 http://62.84.120.240/api/v1/
 http://62.84.120.240/admin/
