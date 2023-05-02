@@ -9,5 +9,5 @@ psycopg2-binary==2.8.6
 PyJWT==2.1.0
 pytz==2020.1
 sqlparse==0.3.1
-pytest-django==4.4.0 
-pytest-pythonpath==0.7.4
+pytest-django
+pytest-pythonpath
