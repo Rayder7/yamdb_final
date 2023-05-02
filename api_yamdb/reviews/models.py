@@ -1,10 +1,8 @@
-from django.db import models
 from django.contrib.auth.models import AbstractUser
-from django.core.validators import MinValueValidator, MaxValueValidator
+from django.core.validators import MaxValueValidator, MinValueValidator
+from django.db import models
 
-from .validators import (
-    max_length_validator, validate_username, year_validator
-)
+from .validators import max_length_validator, validate_username, year_validator
 
 VALUE_MIN_VAL = 1
 VALUE_MAX_VAL = 10

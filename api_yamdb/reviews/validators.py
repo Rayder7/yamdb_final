@@ -3,7 +3,6 @@ import re
 
 from django.core.exceptions import ValidationError
 
-
 REGEX_FOR_USERNAME = re.compile(r'^[\w.@+-]+')
 
 MAX_VALUE_COMMENT = 5000

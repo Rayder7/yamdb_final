@@ -1,27 +1,25 @@
 import uuid
 
 from django.core.mail import send_mail
-from django_filters.rest_framework import DjangoFilterBackend
 from django.shortcuts import get_object_or_404
-from rest_framework import viewsets, filters, status
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import filters, status, viewsets
 from rest_framework.decorators import action, api_view, permission_classes
-from rest_framework.permissions import (
-    IsAuthenticatedOrReadOnly, IsAuthenticated, AllowAny
-)
+from rest_framework.permissions import (AllowAny, IsAuthenticated,
+                                        IsAuthenticatedOrReadOnly)
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
+from reviews.models import Category, Genre, Review, Title, User
+
 from api_yamdb import settings
-from reviews.models import (
-    Category, Genre, Review, Title, User
-)
-from .mixins import CRDViewSet
-from .serializers import (
-    CategorySerializer, CommentSerializer, GenreSerializer, ReviewSerializer,
-    TitleSerializerRead, TitleSerializerCreate, UserSerializer,
-    SignupSerializer, TokenSerializer
-)
+
 from .filters import TitleFilter
-from .permissions import IsAdminOnly, ReadOnly, IsAuthorOrModeratorOrReadOnly
+from .mixins import CRDViewSet
+from .permissions import IsAdminOnly, IsAuthorOrModeratorOrReadOnly, ReadOnly
+from .serializers import (CategorySerializer, CommentSerializer,
+                          GenreSerializer, ReviewSerializer, SignupSerializer,
+                          TitleSerializerCreate, TitleSerializerRead,
+                          TokenSerializer, UserSerializer)
 
 
 class CategoryViewSet(CRDViewSet):
@@ -116,7 +114,7 @@ class UserViewSet(viewsets.ModelViewSet):
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
-def Token(request):
+def token(request):
     """Метод получения токена."""
     serializer = TokenSerializer(data=request.data)
     serializer.is_valid(raise_exception=True)
@@ -135,7 +133,7 @@ def Token(request):
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
-def Signup(request):
+def signup(request):
     """Метод авторизации через отправку письма."""
     serializer = SignupSerializer(data=request.data)
     if User.objects.filter(
