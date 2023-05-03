@@ -1,4 +1,4 @@
-name: Yamdb workflow
+name: yamdb_workflow
 
 on: [push]
 
@@ -23,11 +23,10 @@ jobs:
       run: |
         # запуск проверки проекта по flake8
         python -m flake8
-        cd api_yamdb/
-        python manage.py test
+        pytest
   
   build_and_push_to_docker_hub:
-    name: Push Docker image to Docker Hub
+    name: Push to Docker Hub
     runs-on: ubantu-latest
     needs: tests
     steps:

@@ -110,6 +110,6 @@ docker-compose exec web python manage.py loaddata fixtures.json
 
 
 ## Развёрнутый проект
-http://62.84.120.240/api/v1/
-http://62.84.120.240/admin/
-http://62.84.120.240/redoc/
+http://158.160.25.205/api/v1/
+http://158.160.25.205/admin/
+http://158.160.25.205/redoc/
